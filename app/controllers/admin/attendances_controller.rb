@@ -1,6 +1,5 @@
-class AttendancesController < ApplicationController
-  before_action :admin_only!, only: [:create, :update]
-  before_action :set_employee, only: [:create, :update]
+class Admin::AttendancesController < ApplicationController
+  before_action :set_employee, only: [:create]
 
   def create
     @attendance = @employee.attendances.new(attendance_params)
@@ -29,7 +28,4 @@ private
     params.require(:attendance).permit(:id, :note, :status)
   end
 
-  def admin_only!
-    render json: { status: :unauthorized, messaage: "Only admin user allowed." } unless current_user.admin?
-  end
 end

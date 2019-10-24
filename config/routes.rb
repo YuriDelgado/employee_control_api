@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  
-  resources :users do
-    resources :attendances, only: [:create, :update]
-  end
+  namespace :api, defaults: { format: :json } do
+    namespace :admin do
+      resources :employees do
+        resources :attendances, only: [:create, :update]
+      end
+    end
 
+  end
   devise_for  :users,
                 path: '',
                 path_names: {
