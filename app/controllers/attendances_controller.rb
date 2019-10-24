@@ -1,11 +1,11 @@
 class AttendancesController < ApplicationController
-  before_action :authorize!, only: [:create, :update]
+  before_action :admin_only!, only: [:create, :update]
   before_action :set_employee, only: [:create, :update]
 
   def create
     @attendance = @employee.attendances.new(attendance_params)
     if@attendance.save
-      render json: { status: :created, message: "Attendance created successfully!", data: @attendance }
+      render json: { status: :ok, message: "Attendance created successfully!", data: @attendance }
     else
       render json: @attendance.errors, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ private
     params.require(:attendance).permit(:id, :note, :status)
   end
 
-  def authorize!
-    render json: { status: :unauthorized } unless current_user.admin?
+  def admin_only!
+    render json: { status: :unauthorized, messaage: "Only admin user allowed." } unless current_user.admin?
   end
 end

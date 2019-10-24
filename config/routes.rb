@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :users do
-    resources :attendances, only: [:index, :create, :update]
+    resources :attendances, only: [:create, :update]
   end
 
   devise_for  :users,
