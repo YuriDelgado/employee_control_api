@@ -1,17 +1,23 @@
 require 'rails_helper'
 
 
-describe AttendancesController, type: :controller do
+describe Api::Admin::AttendancesController, type: :controller do
+  before :each do
+    request.env["HTTP_ACCEPT"] = 'application/json'
+  end
+
   describe "POST #create" do
     let(:admin) { create :user, :with_employees } 
-    let(:params) { {user_id: admin.employees.first.id, attendance: {status: :check_in, note: "created"}} } 
+    let(:employee) { admin.employees.first }
+    let(:params) { {employee_id: employee.id, attendance: {status: :check_in, note: "created"}} } 
+
 
     before do
       sign_in admin
     end
 
     it "returns http ok" do
-      post :create, params: params, session: {}
+      post :create, params: params
       expect(response).to have_http_status(:ok)
     end
   end
@@ -21,7 +27,7 @@ describe AttendancesController, type: :controller do
     let(:employee) { admin.employees.last }
     let(:attendance) { employee.attendances.first }
     let(:params) do
-      { user_id: employee.id,
+      { employee_id: employee.id,
         attendance: {
           id: attendance.id,
           status: 2,
@@ -29,15 +35,14 @@ describe AttendancesController, type: :controller do
         }
       }
     end
-    let(:url) { "/users/#{employee.id}/attendances/#{attendance.id}" }
+    let(:url) { "/api/admin/employees/#{employee.id}/attendances/#{attendance.id}" }
 
     before do
-      attendance.save!
       sign_in admin
     end
 
     xit "returns http ok" do
-      put url, params: params
+      put :update, params: params
       expect(response).to have_http_status(:ok)
     end
   end
