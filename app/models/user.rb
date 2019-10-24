@@ -5,6 +5,7 @@ class User < ApplicationRecord
           foreign_key: "admin_id"
   belongs_to :admin, class_name: "User",
           optional: true
+  has_many :attendances
 
   enum role: [:admin, :employee]
   

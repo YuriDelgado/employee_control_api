@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_23_190350) do
+ActiveRecord::Schema.define(version: 2019_10_23_193336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.string "note"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
 
   create_table "jwt_blacklists", force: :cascade do |t|
     t.string "jti"
@@ -38,4 +47,5 @@ ActiveRecord::Schema.define(version: 2019_10_23_190350) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "users"
 end
