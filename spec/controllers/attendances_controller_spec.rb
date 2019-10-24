@@ -20,14 +20,24 @@ describe AttendancesController, type: :controller do
     let(:admin) { create :user, :with_employees }
     let(:employee) { admin.employees.last }
     let(:attendance) { employee.attendances.first }
-    let(:params) { {user_id: employee.id, attendance: {id: attendance.id, status: :lunch, note: "updated" }} } 
+    let(:params) do
+      { user_id: employee.id,
+        attendance: {
+          id: attendance.id,
+          status: 2,
+          note: "updated"
+        }
+      }
+    end
+    let(:url) { "/users/#{employee.id}/attendances/#{attendance.id}" }
 
     before do
+      attendance.save!
       sign_in admin
     end
 
     xit "returns http ok" do
-      put :update, params: params, session: {}
+      put url, params: params
       expect(response).to have_http_status(:ok)
     end
   end
