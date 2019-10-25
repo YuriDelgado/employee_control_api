@@ -12,4 +12,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtBlacklist
+
+  def all_employees
+    employees.all.includes(:attendances)
+  end
 end
