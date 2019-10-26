@@ -7,6 +7,11 @@ class Attendance < ApplicationRecord
   
   default_scope -> { order(created_at: "ASC") }
 
+  def group_by_criteria
+    user_id
+    created_at.to_date.to_s
+  end
+
   private
   def set_diff_in_seconds
     self.diff_in_seconds = (updated_at - created_at).to_i
