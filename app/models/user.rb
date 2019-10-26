@@ -7,6 +7,9 @@ class User < ApplicationRecord
           optional: true
   has_many :attendances
 
+  validates :admin_id, presence: true, if: :employee?
+  validates :admin_id, absence: true, if: :admin?
+
   enum role: [:admin, :employee]
   
   devise :database_authenticatable, :registerable,
