@@ -28,9 +28,9 @@ describe Api::Admin::AttendancesController, type: :controller do
     let(:attendance) { employee.attendances.first }
     let(:params) do
       { employee_id: employee.id,
+        id: attendance.id,
         attendance: {
           id: attendance.id,
-          status: 2,
           note: "updated"
         }
       }
@@ -41,7 +41,7 @@ describe Api::Admin::AttendancesController, type: :controller do
       sign_in admin
     end
 
-    xit "returns http ok" do
+    it "returns http ok" do
       put :update, params: params
       expect(response).to have_http_status(:ok)
     end

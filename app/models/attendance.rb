@@ -3,6 +3,8 @@ class Attendance < ApplicationRecord
 
   belongs_to :user
 
+  default_scope ->{ order(created_at: :asc) }
+
   enum status: [:check_in, :check_out, :lunch, :company_errand, :personal_errand, :emergency, :other]
   
 
