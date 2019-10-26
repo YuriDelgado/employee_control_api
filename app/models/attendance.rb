@@ -5,10 +5,8 @@ class Attendance < ApplicationRecord
 
   enum status: [:check_in, :check_out, :lunch, :company_errand, :personal_errand, :emergency, :other]
   
-  default_scope -> { order(created_at: "ASC") }
 
-  def group_by_criteria
-    user_id
+  def created_at_to_date_criteria
     created_at.to_date.to_s
   end
 

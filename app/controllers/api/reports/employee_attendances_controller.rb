@@ -1,6 +1,7 @@
-class Api::Admin::Reports::EmployeesAttendancesController < AdminController
+class Api::Reports::EmployeeAttendancesController < ApplicationController
   def index
-    @employees = current_user.employees_attendances_by_date_range(date_range_from_params)
+    @attendances = current_user.attendances_by_date_range(date_range_from_params)
+    return render json:  { attedances: @attendances }
   end
 
   private

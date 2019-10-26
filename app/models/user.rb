@@ -17,4 +17,15 @@ class User < ApplicationRecord
     employees.all.includes(:attendances)
       .where(attendances: {created_at: (range_date)})
   end
+
+  def attendances_by_date_range range_date
+    attendances.where(created_at: (range_date))
+  end
+
+  def test_group
+    attendances.all
+      .select('"attendances"."created_at"')
+      .group('DATE("attendances"."created_at")')
+      .sum('"attendances"."diff_in_seconds"')
+  end
 end

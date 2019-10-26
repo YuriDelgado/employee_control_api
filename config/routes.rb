@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
+    namespace :reports do
+      resources :employee_attendances, only: :index
+    end
     namespace :admin do
       resources :employees do
         resources :attendances, only: [:create, :update]
