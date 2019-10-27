@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe Api::Admin::Reports::EmployeesAttendancesController, type: :controller do
   let(:admin) { create :user, :with_employees }
   let(:params) {
-    { pivot_date: DateTime.now(),
-      date_word_range: "year"
+    { 
+      pivot_date: DateTime.now,
+      date_word_range: "week"
     }
   }
 
