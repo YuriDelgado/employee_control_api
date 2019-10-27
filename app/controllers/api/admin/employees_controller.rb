@@ -3,7 +3,7 @@ class Api::Admin::EmployeesController < AdminController
   before_action :set_defaults_params, only: [:create, :update]
 
   def index
-    @employees = current_user.employees_attendances_by_date_range (DateTime.now - 4)..(DateTime.now - 2)
+    @employees = current_user.employees_attendances_by_date_range(DateTime.now.all_month)
     return render json: @employees, include: :attendances
   end
 

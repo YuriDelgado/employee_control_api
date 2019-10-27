@@ -23,6 +23,6 @@ class User < ApplicationRecord
   end
 
   def attendances_by_date_range range_date
-    attendances.where(created_at: (range_date))
+    attendances.where(created_at: (range_date)).group_by(&:created_at_to_date_criteria)
   end
 end
