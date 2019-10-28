@@ -14,6 +14,7 @@ To run the app locally you need to:
 - clone this rerpositoy to your local by typing `git clone git@github.com:YuriDelgado/employee_control_api.git`
 - change to the directory you choose
 - run `bundle install`
+
 if no errors then:
 - run `rails s` or `rails s -p [num-port]` 
 
@@ -60,7 +61,7 @@ if no errors then:
 }
 ```
 
-- Logout
+- ##### Logout
 	+ method: `DELETE`
 	+ URI: `/logout`
 
@@ -68,7 +69,7 @@ if no errors then:
 
 > When you login as admin the API provide an Authentication Bearer token to be sure your account is authorized to perform actions related to the management of employees, like create, update and see the employees report. To do so, yu need to set this Authentication Bearer token in the headers of all the requests you made, in order to success. Next here, you have the end-points related for this actions.
 	
-- Create employee
+- ##### Create employee
 	+ requirement: logged as admin user
 	+ method: `POST`
 	+ URI: `/api/admin/employees`
@@ -83,7 +84,7 @@ if no errors then:
 }
 ```
  
-- Update employee
+- ##### Update employee
 	+ requirement: logged as admin user
 	+ method: `PUT`/`PATCH`
 	+ URI: `/api/admin/employees`
@@ -96,7 +97,7 @@ if no errors then:
 }
 ```
 
-- Employees attendances report
+- ##### Employees attendances report
 	+ requirement: logged as admin user
 	+ method: `GET`
 	+ URI: `/api/admin/reports/employees_attendances`
@@ -110,9 +111,9 @@ if no errors then:
  
 ### Employee endpoints
 
-> Logged in as employee, you can only see the report of your check-ins/check-outs, this action require the employee to provide the date or the date range to get the information. As well as the Admin user, the Authirization Berer token is required at the headers for each request.
+> Logged in as employee, you can only see the report of your check-ins/check-outs, this action require the employee to provide the date or the date range to get the appropriate information. As well as the Admin user, the Authorization Berer token is required at the headers for each request.
 	
-- employee attendances report
+- ##### Employee attendances report
 	+ requirement: logged as admin user
 	+ method: `GET`
 	+ URI: `/api/reports/employee_attendances`
