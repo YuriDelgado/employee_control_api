@@ -30,10 +30,11 @@ if no errors then:
 ## Endpoint description
 
 ### Admin auth endpoints
- - Sign up
- .- method: `POST`
- .- URI: `/signup`
- .- JSON example data:
+- Sign up
+ 	+ method: `POST`
+ 	+ URI: `/signup`
+ 	+ JSON example data:
+```
  {
 	  "user": {
 		  "name":"Admin",
@@ -41,28 +42,32 @@ if no errors then:
 		  "password": "123qwe",
 	  }
  }
+```
 
 - Login
-.- method: `POST`
-.- URI: `/login`
-.- JSON example data:
+	+ method: `POST`
+	+ URI: `/login`
+	+ JSON example data:
+```
 {
 	"user": {
 		"email": "yuri@test.com",
 		"password": "123qwe"
 	}
 }
+```
 
 - Logout
-.- method: `DELETE`
-.- URI: `/logout`
+	+ method: `DELETE`
+	+ URI: `/logout`
 
 ### Admin endpoints
 - Create employee
- .- requirement: logged as admin user
- .- method: `POST`
- .- URI: `/api/admin/employees`
- .- JSON example data
+	+ requirement: logged as admin user
+	+ method: `POST`
+	+ URI: `/api/admin/employees`
+ 	+ JSON example data
+```
  {
   "employee": {
    "name": "Johnette Stracke",
@@ -70,23 +75,26 @@ if no errors then:
 	  "password": "123qwe",
 	 }
  }
+```
  
 - Update employee
-.- requirement: logged as admin user
-.- method: `PUT`/`PATCH`
-.- URI: `/api/admin/employees`
-.- JSON example data
+	+ requirement: logged as admin user
+	+ method: `PUT`/`PATCH`
+	+ URI: `/api/admin/employees`
+	+ JSON example data
+```
 {
 	"employee": {
 		"name": "Rusty Jacobs",
 	}
 }
+```
 
 - Employees attendances report
-  .- requirement: logged as admin user
-  .- method: `GET`
-  .- URI: `/api/admin/reports/employees_attendances`
-  .- JSON example data
+	+ requirement: logged as admin user
+	+ method: `GET`
+	+ URI: `/api/admin/reports/employees_attendances`
+	+ JSON example data
 ```
   {
 	  "pivot_date": "2019-10-25",
@@ -96,10 +104,10 @@ if no errors then:
  
 ### Employee endpoints
 - employee attendances report
-.- requirement: logged as admin user
-.- method: `GET`
-.- URI: `/api/reports/employee_attendances`
-.- JSON example data
+	+ requirement: logged as admin user
+	+ method: `GET`
+	+ URI: `/api/reports/employee_attendances`
+	+ JSON example data
 ```
 {
 	"pivot_date": "2019-10-25",
