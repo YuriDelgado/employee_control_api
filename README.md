@@ -30,7 +30,9 @@ if no errors then:
 ## Endpoint description
 
 ### Admin auth endpoints
-	Auth is provideed for admins only, when you sign up, admin role is automatically setted to your account, once when you login the API, you can add employees to your account, this employeees are not availeable for the rest of the admins
+
+Auth is provideed for admins only, when you sign up, admin role is automatically setted to your account, once when you login the API, you can add employees to your account, this employeees are not availeable for the rest of the admins
+
 - ##### Sign up
  	+ method: `POST`
  	+ URI: `/signup`
@@ -63,6 +65,7 @@ if no errors then:
 	+ URI: `/logout`
 
 ### Admin endpoints
+
 	When you login as admin the API provide an Authentication Bearer token to be sure your account is authorized to perform actions related to the management of employees, like create, update and see the employees report. To do so, yu need to set this Authentication Bearer token in the headers of all the requests you made, in order to success. Next here, you have the end-points related for this actions.
 	
 - Create employee
@@ -106,6 +109,7 @@ if no errors then:
 ``` 
  
 ### Employee endpoints
+
 	Logged in as employee, you can only see the report of your check-ins/check-outs, this action require the employee to provide the date or the date range to get the information. As well as the Admin user, the Authirization Berer token is required at the headers for each request.
 	
 - employee attendances report
@@ -119,5 +123,3 @@ if no errors then:
 	"date_word_range": "year"
 }
 ```
-
- 
