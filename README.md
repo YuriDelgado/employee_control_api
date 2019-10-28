@@ -1,13 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Employee attendances control is an API developed in Ruby on Rails to control employees check-in/check-outs, through this API yu can sign up as Admin by default, create your set of employees, and control their information. During the day you can control the check-ins and chek outs by adding labels like :lunch, :company_errand, :personal_errand, :emergency, :others and :check_out, to get an status of not only for the presence or absence but also the reason the employee leve their workplace, as well as the control of the time the employee spend at work.
 
-Things you may want to cover:
+## API requirements
+  * Ruby version
+    2.5.1p57
+  * Ruby on Rails gem version
+    5.2.3
 
-* Ruby version
+## Roun the API in development environment
+To run the locally app you need to clone this rerpositoy by typing `git clone git@github.com:YuriDelgado/employee_control_api.git`
 
-* System dependencies
 
 * Configuration
 
