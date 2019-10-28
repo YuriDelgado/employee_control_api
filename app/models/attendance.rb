@@ -1,5 +1,6 @@
 class Attendance < ApplicationRecord
   before_save :set_diff_in_seconds, if: :persisted?
+  validates_with Attendances::CheckInOpenedCancelled
 
   belongs_to :user
 

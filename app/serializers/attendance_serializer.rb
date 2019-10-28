@@ -1,5 +1,5 @@
 class AttendanceSerializer < ActiveModel::Serializer
-  attributes :status, :created_at, :updated_at, :diff_in_seconds
+  attributes :status, :created_at, :updated_at, :diff_in_seconds, :note
   belongs_to :user
 
   def user
