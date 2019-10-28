@@ -34,24 +34,24 @@ if no errors then:
  .- method: `POST`
  .- URI: `/signup`
  .- JSON example data:
- ```{
+ {
 	  "user": {
 		  "name":"Admin",
 		  "email": "admin@test.com",
 		  "password": "123qwe",
 	  }
- }```
+ }
 
 - Login
 .- method: `POST`
 .- URI: `/login`
 .- JSON example data:
-```{
+{
 	"user": {
 		"email": "yuri@test.com",
 		"password": "123qwe"
 	}
-}```
+}
 
 - Logout
 .- method: `DELETE`
@@ -63,35 +63,36 @@ if no errors then:
  .- method: `POST`
  .- URI: `/api/admin/employees`
  .- JSON example data
- ```{
+ {
   "employee": {
    "name": "Johnette Stracke",
 	  "email": "johnette.stracke@test.com",
 	  "password": "123qwe",
 	 }
- }```
+ }
  
 - Update employee
 .- requirement: logged as admin user
 .- method: `PUT`/`PATCH`
 .- URI: `/api/admin/employees`
 .- JSON example data
-```{
+{
 	"employee": {
 		"name": "Rusty Jacobs",
 	}
-}```
+}
 
 - Employees attendances report
   .- requirement: logged as admin user
   .- method: `GET`
   .- URI: `/api/admin/reports/employees_attendances`
   .- JSON example data
-  ```{
+```
+  {
 	  "pivot_date": "2019-10-25",
 	  "date_word_range": "year"
-  }```
- 
+  }
+``` 
  
 ### Employee endpoints
 - employee attendances report
@@ -99,9 +100,11 @@ if no errors then:
 .- method: `GET`
 .- URI: `/api/reports/employee_attendances`
 .- JSON example data
-```{
+```
+{
 	"pivot_date": "2019-10-25",
 	"date_word_range": "year"
-}```
+}
+```
 
  
