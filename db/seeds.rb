@@ -19,6 +19,7 @@ admin = User.create!(
     email: Faker::Internet.email,
     password: '123qwe', 
     password_confirmation: '123qwe',
+    role: :employee,
     admin_id: admin.id,
   )
   user.created_at = DateTime.now - 8.days

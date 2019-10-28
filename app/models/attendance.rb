@@ -1,14 +1,15 @@
 class Attendance < ApplicationRecord
   before_save :set_diff_in_seconds, if: :persisted?
+  validates_with Attendances::CheckInOpenedCancelled
 
   belongs_to :user
 
+  default_scope ->{ order(created_at: :asc) }
+
   enum status: [:check_in, :check_out, :lunch, :company_errand, :personal_errand, :emergency, :other]
   
-  default_scope -> { order(created_at: "ASC") }
 
-  def group_by_criteria
-    user_id
+  def created_at_to_date_criteria
     created_at.to_date.to_s
   end
 

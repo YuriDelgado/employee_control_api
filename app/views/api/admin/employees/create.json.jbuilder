@@ -1,1 +1,1 @@
-json.partial! @employee
+json.partial! @employee, partial: 'employee', as: :employee

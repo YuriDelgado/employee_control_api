@@ -1,12 +1,8 @@
 class Api::Admin::Reports::EmployeesAttendancesController < AdminController
-  def index
-    @employees = current_user.employees_attendances_by_date_range(date_range_from_params)
-  end
+  include UsersHelper
 
-  private
-  def date_range_from_params
-    pivot_date = params[:pivot_date] || DateTime.yesterday
-    word_range = params[:word_range] || "day"
-    pivot_date.to_datetime.send("all_#{word_range}")
+  def index
+    @employees = current_user.employees_attendances_by_date_range date_range_from_params(params)
+    return render json: @employees
   end
 end
