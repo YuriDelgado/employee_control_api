@@ -8,8 +8,8 @@ Employee attendances control is an API developed in Ruby on Rails to control emp
   * Bundler version 1.16.2
   * Postgresql version 10.10
 
-## Roun the API in development environment
-To run locally app you need to
+## Running the API in development environment
+To run the app locally you need to:
 - make sure you have ruby, ruby on rails and postgres database installed and running and the versions I mentioned below.
 - clone this rerpositoy to your local by typing `git clone git@github.com:YuriDelgado/employee_control_api.git`
 - change to the directory you choose
@@ -23,7 +23,85 @@ if no errors then:
  - `rails db:seed` to add sample data
  - `rails db:drop` to drop the database
 
-* How to run the test suite
-  to run the testsuite run `rspec` or `rspec route/to/file/spec.rb`
+## How to run the test suite
+  run `rspec` or `rspec route/to/file/spec.rb`
   
-* ...
+
+## Endpoint description
+
+### Admin auth endpoints
+ - Sign up
+ .- method: `POST`
+ .- URI: `/signup`
+ .- JSON example data:
+ ```{
+	  "user": {
+		  "name":"Admin",
+		  "email": "admin@test.com",
+		  "password": "123qwe",
+	  }
+ }```
+
+- Login
+.- method: `POST`
+.- URI: `/login`
+.- JSON example data:
+```{
+	"user": {
+		"email": "yuri@test.com",
+		"password": "123qwe"
+	}
+}```
+
+- Logout
+.- method: `DELETE`
+.- URI: `/logout`
+
+### Admin endpoints
+- Create employee
+ .- requirement: logged as admin user
+ .- method: `POST`
+ .- URI: `/api/admin/employees`
+ .- JSON example data
+ ```{
+  "employee": {
+   "name": "Johnette Stracke",
+	  "email": "johnette.stracke@test.com",
+	  "password": "123qwe",
+	 }
+ }```
+ 
+- Update employee
+.- requirement: logged as admin user
+.- method: `PUT`/`PATCH`
+.- URI: `/api/admin/employees`
+.- JSON example data
+```{
+	"employee": {
+		"name": "Rusty Jacobs",
+	}
+}```
+
+- Employees attendances report
+  .- requirement: logged as admin user
+  .- method: `GET`
+  .- URI: `/api/admin/reports/employees_attendances`
+  .- JSON example data
+  ```{
+	  "pivot_date": "2019-10-25",
+	  "date_word_range": "year"
+  }```
+ 
+ 
+### Employee endpoints
+- employee attendances report
+.- requirement: logged as admin user
+.- method: `GET`
+.- URI: `/api/reports/employee_attendances`
+.- JSON example data
+```{
+	"pivot_date": "2019-10-25",
+	"date_word_range": "year"
+}```
+
+ 
