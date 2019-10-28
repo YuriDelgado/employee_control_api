@@ -8,8 +8,8 @@ describe Api::Admin::AttendancesController, type: :controller do
 
   describe "POST #create" do
     let(:admin) { create :user, :with_employees } 
-    let(:employee) { admin.employees.first }
-    let(:params) { {employee_id: employee.id, attendance: {status: :check_in, note: "created"}} } 
+    let(:params) { {employee_id: admin.employees.first.id, attendance: {status: :check_in, note: "created"}} } 
+    let(:invalid_params) { {employee_id: admin.employees.last.id, attendance: {status: :check_in, note: "error created"}} } 
 
 
     before do
@@ -19,6 +19,12 @@ describe Api::Admin::AttendancesController, type: :controller do
     it "returns http ok" do
       post :create, params: params
       expect(response).to have_http_status(:ok)
+    end
+
+    it "returns http error validating check_in twice in the same time" do
+      post :create, params: invalid_params
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response.body).to have_content "A :check_in attendance is in progress."
     end
   end
   
@@ -35,7 +41,6 @@ describe Api::Admin::AttendancesController, type: :controller do
         }
       }
     end
-    let(:url) { "/api/admin/employees/#{employee.id}/attendances/#{attendance.id}" }
 
     before do
       sign_in admin

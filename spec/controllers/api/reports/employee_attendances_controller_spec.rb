@@ -19,7 +19,11 @@ RSpec.describe Api::Reports::EmployeeAttendancesController, type: :controller do
     it "returns http success" do
       get :index, params: params
       expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body)['attendances'].size).to eq 2
+      attendances_by_day = JSON.parse(response.body).first
+      expect(attendances_by_day).to have_key "date"
+      expect(attendances_by_day).to have_key "attendances"
+      expect(attendances_by_day).to have_key "sum"
+      expect(attendances_by_day["attendances"].size).to eq 2
     end
   end
 end

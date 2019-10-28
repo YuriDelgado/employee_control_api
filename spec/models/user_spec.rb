@@ -23,6 +23,7 @@ RSpec.describe User, type: :model do
       expect(User.new(email: "admin@test.com", password: "123456", role: :employee)).to_not be_valid
     end
   end
+  
   context "User associations" do
     it "should have admin belongs_to association" do
       employee = User.reflect_on_association(:admin)

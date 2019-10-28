@@ -14,7 +14,8 @@ FactoryBot.define do
 
     trait :with_attendances do
       after(:create) do |instance|
-        create_list :attendance, 2, { user: instance } 
+        create :attendance, { user: instance, updated_at: DateTime.now + 30.minutes, status: :lunch, diff_in_seconds: 1800 }
+        create :attendance, { user: instance, status: :check_in }
       end
     end
 
