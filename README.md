@@ -114,7 +114,7 @@ if no errors then:
 > Logged in as employee, you can only see the report of your check-ins/check-outs, this action require the employee to provide the date or the date range to get the appropriate information. As well as the Admin user, the Authorization Berer token is required at the headers for each request.
 	
 - ##### Employee attendances report
-	+ requirement: logged as admin user
+	+ requirement: logged as employee user
 	+ method: `GET`
 	+ URI: `/api/reports/employee_attendances`
 	+ JSON example data
